@@ -1,0 +1,28 @@
+set dotenv-load := false
+
+default:
+    @just --list
+
+fmt:
+    cargo fmt --package einstar-vega
+
+fmt-check:
+    cargo fmt --package einstar-vega -- --check
+
+lint:
+    cargo clippy --package einstar-vega --all-targets -- -D warnings
+
+test:
+    cargo test --package einstar-vega --all-targets
+
+coverage:
+    cargo llvm-cov --package einstar-vega --exclude-from-report einstar-vega-cli --all-targets --fail-under-lines 90
+
+docs:
+    cargo test --package einstar-vega --doc --locked
+    cargo doc --package einstar-vega --no-deps --locked
+
+check: fmt-check lint test docs coverage
+
+build:
+    cargo build --package einstar-vega --lib
