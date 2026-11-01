@@ -5,11 +5,12 @@ use cli_command_kit::{HelpOptions, Mode};
 use einstar_vega::{CancellationToken, Client};
 use std::{ffi::OsString, io::Write, path::PathBuf};
 
-pub const SKILL_POINTER: &str = "Install the vega-cli skill using the Skills CLI:\n\n  npx skills add alexgorbatchev/einstar-vega-cli --skill vega-cli\n\nSkill:\n\n  https://github.com/alexgorbatchev/einstar-vega-cli/tree/main/skills/vega-cli\n";
-
 pub fn help_options() -> HelpOptions {
     HelpOptions {
-        skill: Some(SKILL_POINTER.into()),
+        skill: Some(
+            cli_command_kit::SkillSource::new("alexgorbatchev/einstar-vega-cli", "main")
+                .expect("the fixed skill source names a GitHub repository"),
+        ),
         ..HelpOptions::default()
     }
 }
@@ -89,7 +90,7 @@ where
         writeln!(out, "{}", env!("CARGO_PKG_VERSION"))?;
         return Ok(());
     }
-    if cli_command_kit::write_skill(&matches, &help_options(), out)? {
+    if cli_command_kit::write_skill(&command(mode), &matches, &help_options(), out)? {
         return Ok(());
     }
     if let Some(("completion", child)) = matches.subcommand() {

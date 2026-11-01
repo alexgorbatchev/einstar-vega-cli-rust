@@ -133,7 +133,7 @@ async fn validation_help_version_skill_and_output_failures_are_offline() {
         )
         .await
         .unwrap();
-        assert_eq!(output, cli::SKILL_POINTER.as_bytes());
+        assert_eq!(output, INSTALL_TEXT.as_bytes());
         for args in [
             vec!["vega-cli", "project", "download"],
             vec!["vega-cli", "project", "download", "P", "--all"],
@@ -312,3 +312,5 @@ fn device_metadata_preserves_native_cbor_scalar_and_binary_values_in_both_modes(
         }
     }
 }
+
+const INSTALL_TEXT: &str = "Install the vega-cli skill using the Skills CLI:\n\n  npx skills add alexgorbatchev/einstar-vega-cli --skill vega-cli\n\nSkill:\n\n  https://github.com/alexgorbatchev/einstar-vega-cli/tree/main/skills/vega-cli\n";

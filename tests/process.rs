@@ -117,10 +117,7 @@ fn process_metadata_and_diagnostics_obey_stream_and_exit_contracts() {
         assert!(version.stderr.is_empty());
         let skill = command().env("AGENT", agent).arg("skill").output().unwrap();
         assert!(skill.status.success());
-        assert_eq!(
-            skill.stdout,
-            einstar_vega_cli::cli::SKILL_POINTER.as_bytes()
-        );
+        assert_eq!(skill.stdout, INSTALL_TEXT.as_bytes());
         assert!(skill.stderr.is_empty());
         for args in [
             vec!["--help"],
@@ -228,3 +225,5 @@ fn child_download_publishes_all_projects_beneath_dot_output() {
     assert!(status.success());
     assert!(stderr.is_empty());
 }
+
+const INSTALL_TEXT: &str = "Install the vega-cli skill using the Skills CLI:\n\n  npx skills add alexgorbatchev/einstar-vega-cli --skill vega-cli\n\nSkill:\n\n  https://github.com/alexgorbatchev/einstar-vega-cli/tree/main/skills/vega-cli\n";

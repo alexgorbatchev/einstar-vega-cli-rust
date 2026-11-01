@@ -12,7 +12,7 @@ path = "src/main.rs"
 
 [dependencies]
 einstar-vega = { path = "crates/einstar-vega" }
-cli-command-kit = { git = "https://github.com/alexgorbatchev/cli-command-kit-rust.git", rev = "40210e689762f6606776764bb3696e2685198c2e" }
+cli-command-kit = { git = "https://github.com/alexgorbatchev/cli-command-kit-rust.git", rev = "dead4a60e08c7a84bc77ef329b220bfecd57627b" }
 clap = { version = "4.6", features = ["env", "string"] }
 clap_complete = "4.6"
 crossterm = "0.29"
