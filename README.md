@@ -83,7 +83,7 @@ Run `AGENT=1 vega-cli skill` for the offline Skills CLI installation pointer. Th
 
 # Compatibility
 
-Local HTTP, filesystem, process, and terminal verification targets Linux. Physical-device behavior and macOS/Windows execution remain unverified; Windows reserved filenames and alternate data streams have not been validated. The source reports firmware `v1.3.0-22` testing, which is not a Rust hardware verification claim.
+GitHub-hosted Linux CI verifies the local HTTP, filesystem, process, and terminal workflows. Physical-device behavior and macOS/Windows execution remain unverified; Windows reserved filenames and alternate data streams have not been validated. The source reports firmware `v1.3.0-22` testing, which is not a Rust hardware verification claim.
 
 Protocol behavior follows [alexgorbatchev/einstar-vega-cli](https://github.com/alexgorbatchev/einstar-vega-cli), which credits [rabits/einstar-vega-extract](https://github.com/rabits/einstar-vega-extract).
 
